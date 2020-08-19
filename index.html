@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+  <style>
+    #hour{
+      color: red;
+    }
+    #min{
+      color: green;
+    }
+    #sec{
+      color: blue;
+    }
+    </style>
+<body>
+  <div>
+    <span id='hour'></span>:
+    <span id='min'></span>:
+    <span id='sec'></span>
+  </div>
+  <input type="button" onclick="clockStart()" value="Start">
+
+  <input type="button" onclick="clockStop()" value="Stop">
+  
+  <script>
+    function update(){
+      let time = new Date();
+      let h = time.getHours();
+      if (h < 10) h = '0' + h;
+      document.getElementById('hour').innerHTML = h;
+      let m = time.getMinutes();
+      if (m < 10) m = '0' + m;
+      document.getElementById('min').innerHTML = m;
+      let s = time.getSeconds();
+      if (s < 10) s = '0' + s;
+      document.getElementById('sec').innerHTML = s;
+    }
+    function clockStart() { 
+
+      const myInterval = setInterval(update, 1000);
+
+    }
+    function clockStop() {
+
+      clearInterval(myInterval);
+
+    }
+    </script>
+</body>
+</html>
